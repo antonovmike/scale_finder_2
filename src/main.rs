@@ -1,15 +1,10 @@
+mod scales;
+use crate::scales::*;
+
 #[allow(unused)]
-#[allow(dead_code)]
 
 fn main() {
-	// let major_ionian  = [2, 2, 1, 2, 2, 2, 1, 2];
-	// let dorian        = [2, 1, 2, 2, 2, 1, 2, 2];
-	let phrygian= [1, 2, 2, 2, 1, 2, 2, 2];
-	// let lydian        = [2, 2, 2, 1, 2, 2, 2, 1];
-	// let mixolydian    = [2, 2, 1, 2, 2, 2, 1, 2];
-	// let minor_aeolian = [2, 1, 2, 2, 2, 1, 2, 2];
-	// let locrian       = [1, 2, 2, 2, 1, 2, 2, 2];
-    modes('F', phrygian);
+    modes('F', PHRYGIAN);
 }
 
 fn modes(current_note: char, current_mode: [u8; 8]) -> String {
@@ -83,37 +78,30 @@ mod tests {
 
     #[test]
     fn phrygian_c() {
-		let phrygian = [1, 2, 2, 2, 1, 2, 2, 2];
-		assert_eq!(("CDbEbFGAbHb".to_string()), modes('C', phrygian))
+		assert_eq!(("CDbEbFGAbHb".to_string()), modes('C', PHRYGIAN))
 	}
     #[test]
     fn phrygian_d() {
-		let phrygian = [1, 2, 2, 2, 1, 2, 2, 2];
-		assert_eq!(("DEbFGAHbC".to_string()), modes('D', phrygian))
+		assert_eq!(("DEbFGAHbC".to_string()), modes('D', PHRYGIAN))
 	}
     #[test]
     fn phrygian_e() {
-		let phrygian = [1, 2, 2, 2, 1, 2, 2, 2];
-		assert_eq!(("EFGAHCD".to_string()), modes('E', phrygian))
+		assert_eq!(("EFGAHCD".to_string()), modes('E', PHRYGIAN))
 	}
     // #[test]
     // fn phrygian_f() {
-	// 	let phrygian = [1, 2, 2, 2, 1, 2, 2, 2];
 	// 	assert_eq!(("FGbAbHbCDbEb".to_string()), modes('F', phrygian))
 	// }
     // #[test]
     // fn phrygian_g() {
-	// 	let phrygian = [1, 2, 2, 2, 1, 2, 2, 2];
 	// 	assert_eq!(("GAbHbCDEbF".to_string()), modes('G', phrygian))
 	// }
     // #[test]
     // fn phrygian_a() {
-	// 	let phrygian = [1, 2, 2, 2, 1, 2, 2, 2];
 	// 	assert_eq!(("AHbCDEFG".to_string()), modes('A', phrygian))
 	// }
     // #[test]
     // fn phrygian_h() {
-	// 	let phrygian = [1, 2, 2, 2, 1, 2, 2, 2];
 	// 	assert_eq!(("HCDEF#GA".to_string()), modes('A', phrygian))
 	// }
 }
