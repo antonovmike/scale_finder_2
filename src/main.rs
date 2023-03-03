@@ -1,16 +1,7 @@
 mod scales;
 use crate::scales::*;
 
-#[allow(unused)]
-const NOTES: [char; 8] = ['C', 'D', 'E', 'F', 'G', 'A', 'H', 'C'];
-#[allow(unused)]
-const STEPS: [u8; 8] = [2, 2, 1, 2, 2, 2, 1, 2];
-
-fn main() {
-	let a = scale_finder(NOTES, STEPS, MINOR_AEOLIAN);
-    println!("{a}");
-    println!("Minor: C -- D - Eb -- F -- G - Ab - Hb -- C");
-}
+fn main() {}
 
 fn scale_finder(note_sequence: [char; 8], note_steps: [u8; 8], scale: [u8; 8]) -> String {
 	let mut empty_string = "".to_string();
@@ -65,31 +56,33 @@ mod tests {
 
 	#[test]
 	fn c_minor() {
-		assert_eq!("CDEbFGAbHbC".to_string(), scale_finder(NOTES, STEPS, MINOR_AEOLIAN))
+		let c: [char; 8] = ['C', 'D', 'E', 'F', 'G', 'A', 'H', 'C'];
+		let c_steps: [u8; 8] = [2, 2, 1, 2, 2, 2, 1, 2];
+		assert_eq!("CDEbFGAbHbC".to_string(), scale_finder(c, c_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn d_minor() {
-	 let d: [char; 8] = ['D', 'E', 'F', 'G', 'A', 'H', 'C', 'D'];
-	 let d_steps: [u8; 8] = [2, 1, 2, 2, 2, 1, 2, 2];
-	 assert_eq!("DEFGAHbCD".to_string(), scale_finder(d, d_steps, MINOR_AEOLIAN))
+	 	let d: [char; 8] = ['D', 'E', 'F', 'G', 'A', 'H', 'C', 'D'];
+	 	let d_steps: [u8; 8] = [2, 1, 2, 2, 2, 1, 2, 2];
+	 	assert_eq!("DEFGAHbCD".to_string(), scale_finder(d, d_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn e_minor() {
-	 let e: [char; 8] = ['E', 'F', 'G', 'A', 'H', 'C', 'D', 'E'];
-	 let e_steps: [u8; 8] = [1, 2, 2, 2, 1, 2, 2, 2];
-	 assert_eq!("EF#GAHCDE".to_string(), scale_finder(e, e_steps, MINOR_AEOLIAN))
+	 	let e: [char; 8] = ['E', 'F', 'G', 'A', 'H', 'C', 'D', 'E'];
+	 	let e_steps: [u8; 8] = [1, 2, 2, 2, 1, 2, 2, 2];
+	 	assert_eq!("EF#GAHCDE".to_string(), scale_finder(e, e_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn f_minor() {
-	 let f: [char; 8] = ['F', 'G', 'A', 'H', 'C', 'D', 'E', 'F'];
-	 let f_steps: [u8; 8] = [2, 2, 2, 1, 2, 2, 1, 2];
-	 assert_eq!("FGAbHbCDbEbF".to_string(), scale_finder(f, f_steps, MINOR_AEOLIAN))
+	 	let f: [char; 8] = ['F', 'G', 'A', 'H', 'C', 'D', 'E', 'F'];
+	 	let f_steps: [u8; 8] = [2, 2, 2, 1, 2, 2, 1, 2];
+	 	assert_eq!("FGAbHbCDbEbF".to_string(), scale_finder(f, f_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn g_minor() {
-	 let g: [char; 8] = ['G', 'A', 'H', 'C', 'D', 'E', 'F', 'G'];
-	 let g_steps: [u8; 8] = [2, 2, 1, 2, 2, 1, 2, 2];
-	 assert_eq!("GAHbCDEbFG".to_string(), scale_finder(g, g_steps, MINOR_AEOLIAN))
+	 	let g: [char; 8] = ['G', 'A', 'H', 'C', 'D', 'E', 'F', 'G'];
+	 	let g_steps: [u8; 8] = [2, 2, 1, 2, 2, 1, 2, 2];
+	 	assert_eq!("GAHbCDEbFG".to_string(), scale_finder(g, g_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn a_minor() {
