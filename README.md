@@ -1,6 +1,11 @@
 # scale_finder_2
 New version written from scratch. The old one is [here](https://github.com/antonovmike/scale_finder).
 
+Done:
+Check if it flat or sharp scale
+Add flats or sharps if the current scale contains flats or sharps
+
+TODO:
 Goal n1 is to find out how to implement some algorithms for calculating each of diatonic scales, fox example: E flat major, A minor.
 Goal n2 convert wrong accidentals to correct ones for example C sharp major should be D flat major. Because we don't want to use weird cases like E sharp wich is F or Fb wich is E and C sharp witch is H and Hb wich is C.
 
@@ -49,3 +54,13 @@ Minor    = [2, 1, 2, 2, 1, 2, 2, 2]
 H        = [1, 2, 2, 1, 2, 2, 2, 1]
 Minor H:    H  C# D  E  F# G  A  H
 ```
+
+The algorithm:
+
+If MINOR 2 STEP 1 => next notes are sharp
+
+Until MINOR 1 STEP 2 => next notes are regular
+
+If MINOR 1 STEPS 2 => next notes are flat
+
+Until MINOR 2 STEPS 1 => next notes are regular
