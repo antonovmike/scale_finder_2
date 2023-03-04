@@ -23,7 +23,7 @@ fn main() {
 	println!("LOCRIAN: \t{}", scale_finder('C', ' ', "locrian"));
 }
 
-fn sequencer(note_name: char) -> Vec<(char, u8)> {
+fn sequencer(note_name: char) -> (Vec<u8>, Vec<char>) {
 	let note_step: (char, u8) = match note_name {
 		'C' => ('C', 2),
 		'D' => ('D', 2),
@@ -43,11 +43,23 @@ fn sequencer(note_name: char) -> Vec<(char, u8)> {
 	a.push(note_step);
 	let mut b = second.to_vec();
 	b.append(&mut a);
-	return b
+
+	let note_sequence_tuple = b;
+	let mut note_semitones: Vec<u8> = vec![];
+	for i in note_sequence_tuple.clone() {
+		note_semitones.push(i.1)
+	}
+	let mut note_sequence: Vec<char> = vec![];
+	for i in note_sequence_tuple {
+		note_sequence.push(i.0)
+	}
+
+	(note_semitones, note_sequence)
 }
 
 // Check if note_str is correct: CDEFGAH or B
 // Check for accidentals: flat and sharp
+#[allow(unused)]
 fn note_and_acc(note: char, acc: char) -> (char, char) {
 	let upper = note.to_uppercase().to_string().chars().next().expect("string is empty");
 	let mut note_name: char = ' ';
@@ -85,15 +97,8 @@ fn scale_finder(note: char, acc: char, scale: &str) -> String {
 		&_ => [0,0,0,0,0,0,0,0,]
 	};
 
-	let note_sequence_tuple = sequencer(note_name);
-	let mut note_semitones: Vec<u8> = vec![];
-	for i in note_sequence_tuple.clone() {
-		note_semitones.push(i.1)
-	}
-	let mut note_sequence: Vec<char> = vec![];
-	for i in note_sequence_tuple {
-		note_sequence.push(i.0)
-	}
+	let (note_semitones, note_sequence) = sequencer(note_name);
+
 	let mut empty_string = "".to_string();
 	let mut index = 0;
 	let mut shift_up = false;
@@ -146,10 +151,12 @@ mod tests {
 
 	#[test]
 	fn test_sequence() {
-		let e = vec![('E', 1), ('F', 2), ('G', 2), ('A', 2), ('H', 1), ('C', 2), ('D', 2), ('E', 1)];
-		let a = vec![('A', 2), ('H', 1), ('C', 2), ('D', 2), ('E', 1), ('F', 2), ('G', 2), ('A', 2)];
-		assert_eq!(e, sequencer('E'));
-		assert_eq!(a, sequencer('A'))
+		let e_u8 = vec![1, 2, 2, 2, 1, 2, 2, 1];
+		let e_char = vec!['E', 'F', 'G', 'A', 'H', 'C', 'D', 'E'];
+		let a_u8 = vec![2, 1, 2, 2, 1, 2, 2, 2];
+		let a_char = vec!['A', 'H', 'C', 'D', 'E', 'F', 'G', 'A'];
+		assert_eq!((e_u8, e_char), sequencer('E'));
+		assert_eq!((a_u8, a_char), sequencer('A'))
 	}
 
 	#[test]
