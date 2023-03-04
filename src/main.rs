@@ -35,10 +35,10 @@ fn sequencer(note_name: char) -> Vec<(char, u8)> {
 		'B' => ('H', 1),
 		_ => (' ', 0)
 	};
-// Split octave at the root note
+	// Split octave at the root note
 	let split_here = OCTAVE_STEPS.iter().position(|&r| r == note_step).unwrap();
 	let (first, second) = OCTAVE_STEPS.split_at(split_here);
-// Unite both parts. Now note sequense starts with root note
+	// Unite both parts. Now note sequense starts with root note
 	let mut a = first.to_vec();
 	a.push(note_step);
 	let mut b = second.to_vec();
@@ -46,23 +46,30 @@ fn sequencer(note_name: char) -> Vec<(char, u8)> {
 	return b
 }
 
-#[allow(unused)]
-fn scale_finder(note: char, acc: char, scale: &str) -> String {
+// Check if note_str is correct: CDEFGAH or B
+// Check for accidentals: flat and sharp
+fn note_and_acc(note: char, acc: char) -> (char, char) {
 	let upper = note.to_uppercase().to_string().chars().next().expect("string is empty");
-	// Check if note_str is correct: CDEFGAH or B
 	let mut note_name: char = ' ';
 	if "CDEFGAH".contains(upper) {
 		note_name = upper
 	} else if upper == 'B' {
 		note_name = 'H'
 	} else {
-		return "".to_string()
+		note_name = ' '
 	}
 	
-	let mut flat = ' ';
-	let mut sharp = ' ';
-	if acc == 'b' || acc == 'B' { flat = 'b'  }
-	if acc == '#' { sharp = '#' }
+	let mut any_acc = ' ';
+	if acc == 'b' || acc == 'B' { any_acc = 'b'  }
+	if acc == '#' { any_acc = '#' }
+
+	(note_name, any_acc)
+}
+
+#[allow(unused)]
+fn scale_finder(note: char, acc: char, scale: &str) -> String {
+	let (note_name, any_acc) = note_and_acc(note, acc);
+	if note_name == ' ' {return "".to_string()}
 
 	let scale_name = &scale[..];
 	let current_scale = match scale_name {
