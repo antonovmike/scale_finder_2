@@ -14,6 +14,7 @@ fn main() {
 	// println!("{:?}", b);
 
 	let c_steps: [u8; 8] = [2, 2, 1, 2, 2, 2, 1, 2];
+	println!("Step number:\t1\t2\t3\t4\t5\t6\t7\t1");
 	println!("MAJOR_IONIAN: \t{}", scale_finder('C', c_steps, MAJOR_IONIAN));
 	println!("DORIAN: \t{}", scale_finder('C', c_steps, DORIAN));
 	println!("PHRYGIAN: \t{}", scale_finder('C', c_steps, PHRYGIAN));
@@ -45,36 +46,36 @@ fn scale_finder(note_name: char, note_steps: [u8; 8], scale: [u8; 8]) -> String 
 	for i in note_steps {
 		if i == scale[index] {
 			if !shift_down && !shift_up {
-				empty_string = format!("{}{}", empty_string, note_sequence[index]);
+				empty_string = format!("{}{}\t", empty_string, note_sequence[index]);
 			}
 			if shift_down {
-				empty_string = format!("{}{}{}", empty_string, note_sequence[index], 'b');
+				empty_string = format!("{}{}{}\t", empty_string, note_sequence[index], 'b');
 			}
 			if shift_up {
-				empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
+				empty_string = format!("{}{}{}\t", empty_string, note_sequence[index], '#');
 			}
 		}
 		else if i < scale[index] && !shift_up && !shift_down {
-			empty_string = format!("{}{}", empty_string, note_sequence[index]);
+			empty_string = format!("{}{}\t", empty_string, note_sequence[index]);
 			shift_up = true
 		}
 		else if i > scale[index] && !shift_up && !shift_down {
-			empty_string = format!("{}{}", empty_string, note_sequence[index]);
+			empty_string = format!("{}{}\t", empty_string, note_sequence[index]);
 			shift_down = true
 		}
 		else if i < scale[index] && shift_up && !shift_down {
-			empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
+			empty_string = format!("{}{}{}\t", empty_string, note_sequence[index], '#');
 		}
 		else if i > scale[index] && shift_up && !shift_down {
-			empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
+			empty_string = format!("{}{}{}\t", empty_string, note_sequence[index], '#');
 			shift_up = false
 		}
 		
 		else if i > scale[index] && shift_down && !shift_up {
-			empty_string = format!("{}{}{}", empty_string, note_sequence[index], 'b');
+			empty_string = format!("{}{}{}\t", empty_string, note_sequence[index], 'b');
 		}
 		else if i < scale[index] && shift_down && !shift_up {
-			empty_string = format!("{}{}{}", empty_string, note_sequence[index], 'b');
+			empty_string = format!("{}{}{}\t", empty_string, note_sequence[index], 'b');
 			shift_down = false
 		}	
 		index += 1
@@ -96,41 +97,41 @@ mod tests {
 	#[test]
 	fn c_minor() {
 		let c_steps: [u8; 8] = [2, 2, 1, 2, 2, 2, 1, 2];
-		assert_eq!("CDEbFGAbHbC".to_string(), scale_finder('C', c_steps, MINOR_AEOLIAN))
+		assert_eq!("C\tD\tEb\tF\tG\tAb\tHb\tC\t".to_string(), scale_finder('C', c_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn d_minor() {
 	 	let d_steps: [u8; 8] = [2, 1, 2, 2, 2, 1, 2, 2];
-	 	assert_eq!("DEFGAHbCD".to_string(), scale_finder('D', d_steps, MINOR_AEOLIAN))
+	 	assert_eq!("D\tE\tF\tG\tA\tHb\tC\tD\t".to_string(), scale_finder('D', d_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn e_minor() {
 	 	let e_steps: [u8; 8] = [1, 2, 2, 2, 1, 2, 2, 2];
-	 	assert_eq!("EF#GAHCDE".to_string(), scale_finder('E', e_steps, MINOR_AEOLIAN))
+	 	assert_eq!("E\tF#\tG\tA\tH\tC\tD\tE\t".to_string(), scale_finder('E', e_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn f_minor() {
 	 	let f_steps: [u8; 8] = [2, 2, 2, 1, 2, 2, 1, 2];
-	 	assert_eq!("FGAbHbCDbEbF".to_string(), scale_finder('F', f_steps, MINOR_AEOLIAN))
+	 	assert_eq!("F\tG\tAb\tHb\tC\tDb\tEb\tF\t".to_string(), scale_finder('F', f_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn g_minor() {
 	 	let g_steps: [u8; 8] = [2, 2, 1, 2, 2, 1, 2, 2];
-	 	assert_eq!("GAHbCDEbFG".to_string(), scale_finder('G', g_steps, MINOR_AEOLIAN))
+	 	assert_eq!("G\tA\tHb\tC\tD\tEb\tF\tG\t".to_string(), scale_finder('G', g_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn a_minor() {
 		let a_steps: [u8; 8] = [2, 1, 2, 2, 1, 2, 2, 2];
-		assert_eq!("AHCDEFGA".to_string(), scale_finder('A', a_steps, MINOR_AEOLIAN))
+		assert_eq!("A\tH\tC\tD\tE\tF\tG\tA\t".to_string(), scale_finder('A', a_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn h_minor() {
 		let h_steps: [u8; 8] = [1, 2, 2, 1, 2, 2, 2, 2];
-		assert_eq!("HC#DEF#GAH".to_string(), scale_finder('H', h_steps, MINOR_AEOLIAN))
+		assert_eq!("H\tC#\tD\tE\tF#\tG\tA\tH\t".to_string(), scale_finder('H', h_steps, MINOR_AEOLIAN))
 	}
 	#[test]
 	fn c_major() {
 		let c_steps: [u8; 8] = [2, 2, 1, 2, 2, 2, 1, 2];
-		assert_eq!("CDEFGAHC".to_string(), scale_finder('C', c_steps, MAJOR_IONIAN))
+		assert_eq!("C\tD\tE\tF\tG\tA\tH\tC\t".to_string(), scale_finder('C', c_steps, MAJOR_IONIAN))
 	}
 }
