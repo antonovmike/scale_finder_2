@@ -15,13 +15,13 @@ fn main() {
 
 	let c_steps: [u8; 8] = [2, 2, 1, 2, 2, 2, 1, 2];
 	println!("Step number:\t1\t2\t3\t4\t5\t6\t7\t1");
-	println!("MAJOR_IONIAN: \t{}", scale_finder('C', c_steps, "major"));
-	println!("DORIAN: \t{}", scale_finder('C', c_steps, "dorian"));
-	println!("PHRYGIAN: \t{}", scale_finder('C', c_steps, "phrygian"));
-	println!("LYDIAN: \t{}", scale_finder('C', c_steps, "lydian"));
-	println!("MIXOLYDIAN: \t{}", scale_finder('C', c_steps, "mixolydian"));
-	println!("MINOR_AEOLIAN: \t{}", scale_finder('C', c_steps, "aeolian"));
-	println!("LOCRIAN: \t{}", scale_finder('C', c_steps, "locrian"));
+	println!("MAJOR_IONIAN: \t{}", scale_finder('C', ' ', c_steps, "major"));
+	println!("DORIAN: \t{}", scale_finder('C', ' ', c_steps, "dorian"));
+	println!("PHRYGIAN: \t{}", scale_finder('C', ' ', c_steps, "phrygian"));
+	println!("LYDIAN: \t{}", scale_finder('C', ' ', c_steps, "lydian"));
+	println!("MIXOLYDIAN: \t{}", scale_finder('C', ' ', c_steps, "mixolydian"));
+	println!("MINOR_AEOLIAN: \t{}", scale_finder('C', ' ', c_steps, "aeolian"));
+	println!("LOCRIAN: \t{}", scale_finder('C', ' ', c_steps, "locrian"));
 }
 
 fn sequencer(note_name: char) -> Vec<char> {
@@ -35,11 +35,23 @@ fn sequencer(note_name: char) -> Vec<char> {
 	b.append(&mut a);
 	return b
 }
-
-fn scale_finder(note_name: char, note_steps: [u8; 8], scale: &str) -> String {
+#[allow(unused)]
+fn scale_finder(note: char, acc: char, note_steps: [u8; 8], scale: &str) -> String {
 // Replace note_steps with OCTAVE_STEPS and remove note_steps
 // OCTAVE_STEPS[2].0 is a char
 // OCTAVE_STEPS[2].1 is a semitone
+
+	// Check if note_str is correct: CDEFGAH
+	let mut note_name: char = ' ';
+	if "CDEFGAH".contains(note) {
+		note_name = note
+	} else {
+		return "".to_string()
+	}
+	let mut flat = ' ';
+	let mut sharp = ' ';
+	if acc == 'b' { flat = 'b'  }
+	if acc == '#' { sharp = '#' }
 
 	let scale_name = &scale[..];
 	let current_scale = match scale_name {
@@ -113,43 +125,27 @@ mod tests {
 	}
 
 	#[test]
-	fn c_minor() {
+	fn wrong_char() {
 		let c_steps: [u8; 8] = [2, 2, 1, 2, 2, 2, 1, 2];
-		assert_eq!("C\tD\tEb\tF\tG\tAb\tHb\tC\t".to_string(), scale_finder('C', c_steps, "minor"))
+		assert_eq!("".to_string(), scale_finder('Q', ' ', c_steps, "minor"))
 	}
+
 	#[test]
-	fn d_minor() {
-	 	let d_steps: [u8; 8] = [2, 1, 2, 2, 2, 1, 2, 2];
-	 	assert_eq!("D\tE\tF\tG\tA\tHb\tC\tD\t".to_string(), scale_finder('D', d_steps, "minor"))
-	}
-	#[test]
-	fn e_minor() {
-	 	let e_steps: [u8; 8] = [1, 2, 2, 2, 1, 2, 2, 2];
-	 	assert_eq!("E\tF#\tG\tA\tH\tC\tD\tE\t".to_string(), scale_finder('E', e_steps, "minor"))
-	}
-	#[test]
-	fn f_minor() {
-	 	let f_steps: [u8; 8] = [2, 2, 2, 1, 2, 2, 1, 2];
-	 	assert_eq!("F\tG\tAb\tHb\tC\tDb\tEb\tF\t".to_string(), scale_finder('F', f_steps, "minor"))
-	}
-	#[test]
-	fn g_minor() {
-	 	let g_steps: [u8; 8] = [2, 2, 1, 2, 2, 1, 2, 2];
-	 	assert_eq!("G\tA\tHb\tC\tD\tEb\tF\tG\t".to_string(), scale_finder('G', g_steps, "minor"))
-	}
-	#[test]
-	fn a_minor() {
+	fn minor_no_acc() {
+		let c_steps: [u8; 8] = [2, 2, 1, 2, 2, 2, 1, 2];
+		let d_steps: [u8; 8] = [2, 1, 2, 2, 2, 1, 2, 2];
+		let e_steps: [u8; 8] = [1, 2, 2, 2, 1, 2, 2, 2];
+		let f_steps: [u8; 8] = [2, 2, 2, 1, 2, 2, 1, 2];
+		let g_steps: [u8; 8] = [2, 2, 1, 2, 2, 1, 2, 2];
 		let a_steps: [u8; 8] = [2, 1, 2, 2, 1, 2, 2, 2];
-		assert_eq!("A\tH\tC\tD\tE\tF\tG\tA\t".to_string(), scale_finder('A', a_steps, "minor"))
-	}
-	#[test]
-	fn h_minor() {
 		let h_steps: [u8; 8] = [1, 2, 2, 1, 2, 2, 2, 2];
-		assert_eq!("H\tC#\tD\tE\tF#\tG\tA\tH\t".to_string(), scale_finder('H', h_steps, "minor"))
-	}
-	#[test]
-	fn c_major() {
-		let c_steps: [u8; 8] = [2, 2, 1, 2, 2, 2, 1, 2];
-		assert_eq!("C\tD\tE\tF\tG\tA\tH\tC\t".to_string(), scale_finder('C', c_steps, "major"))
+		assert_eq!("C\tD\tEb\tF\tG\tAb\tHb\tC\t".to_string(),  scale_finder('C', ' ', c_steps, "minor"));
+	 	assert_eq!("D\tE\tF\tG\tA\tHb\tC\tD\t".to_string(),    scale_finder('D', ' ', d_steps, "minor"));
+	 	assert_eq!("E\tF#\tG\tA\tH\tC\tD\tE\t".to_string(),    scale_finder('E', ' ', e_steps, "minor"));
+	 	assert_eq!("F\tG\tAb\tHb\tC\tDb\tEb\tF\t".to_string(), scale_finder('F', ' ', f_steps, "minor"));
+	 	assert_eq!("G\tA\tHb\tC\tD\tEb\tF\tG\t".to_string(),   scale_finder('G', ' ', g_steps, "minor"));
+		assert_eq!("A\tH\tC\tD\tE\tF\tG\tA\t".to_string(),     scale_finder('A', ' ', a_steps, "minor"));
+		assert_eq!("H\tC#\tD\tE\tF#\tG\tA\tH\t".to_string(),   scale_finder('H', ' ', h_steps, "minor"));
+		assert_eq!("C\tD\tE\tF\tG\tA\tH\tC\t".to_string(),     scale_finder('C', ' ', c_steps, "major"))
 	}
 }
