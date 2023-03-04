@@ -17,7 +17,6 @@ fn main() {
 	println!("MAJOR_IONIAN: \t{}", scale_finder('C', c_steps, MAJOR_IONIAN));
 	println!("DORIAN: \t{}", scale_finder('C', c_steps, DORIAN));
 	println!("PHRYGIAN: \t{}", scale_finder('C', c_steps, PHRYGIAN));
-	println!("DORIAN: \t{}", scale_finder('C', c_steps, DORIAN));
 	println!("LYDIAN: \t{}", scale_finder('C', c_steps, LYDIAN));
 	println!("MIXOLYDIAN: \t{}", scale_finder('C', c_steps, MIXOLYDIAN));
 	println!("MINOR_AEOLIAN: \t{}", scale_finder('C', c_steps, MINOR_AEOLIAN));
