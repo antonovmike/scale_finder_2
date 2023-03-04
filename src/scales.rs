@@ -1,5 +1,3 @@
-pub const OCTAVE:      [char; 7] = ['C', 'D', 'E', 'F', 'G', 'A', 'H'];
-#[allow(unused)]
 pub const OCTAVE_STEPS: [(char, u8); 7] = [('C', 2), ('D', 2), ('E', 1), ('F', 2), ('G', 2), ('A', 2), ('H', 1)];
 
 pub const MAJOR_IONIAN:  [u8; 8] = [2, 2, 1, 2, 2, 2, 1, 2];
