@@ -40,17 +40,20 @@ fn scale_finder(note: char, acc: char, note_steps: [u8; 8], scale: &str) -> Stri
 // Replace note_steps with OCTAVE_STEPS and remove note_steps
 // OCTAVE_STEPS[2].0 is a char
 // OCTAVE_STEPS[2].1 is a semitone
-
-	// Check if note_str is correct: CDEFGAH
+	let upper = note.to_uppercase().to_string().chars().next().expect("string is empty");
+	// Check if note_str is correct: CDEFGAH or B
 	let mut note_name: char = ' ';
-	if "CDEFGAH".contains(note) {
-		note_name = note
+	if "CDEFGAH".contains(upper) {
+		note_name = upper
+	} else if upper == 'B' {
+		note_name = 'H'
 	} else {
 		return "".to_string()
 	}
+	
 	let mut flat = ' ';
 	let mut sharp = ' ';
-	if acc == 'b' { flat = 'b'  }
+	if acc == 'b' || acc == 'B' { flat = 'b'  }
 	if acc == '#' { sharp = '#' }
 
 	let scale_name = &scale[..];
@@ -139,8 +142,8 @@ mod tests {
 		let g_steps: [u8; 8] = [2, 2, 1, 2, 2, 1, 2, 2];
 		let a_steps: [u8; 8] = [2, 1, 2, 2, 1, 2, 2, 2];
 		let h_steps: [u8; 8] = [1, 2, 2, 1, 2, 2, 2, 2];
-		assert_eq!("C\tD\tEb\tF\tG\tAb\tHb\tC\t".to_string(),  scale_finder('C', ' ', c_steps, "minor"));
-	 	assert_eq!("D\tE\tF\tG\tA\tHb\tC\tD\t".to_string(),    scale_finder('D', ' ', d_steps, "minor"));
+		assert_eq!("C\tD\tEb\tF\tG\tAb\tHb\tC\t".to_string(),  scale_finder('c', ' ', c_steps, "minor"));
+	 	assert_eq!("D\tE\tF\tG\tA\tHb\tC\tD\t".to_string(),    scale_finder('d', ' ', d_steps, "minor"));
 	 	assert_eq!("E\tF#\tG\tA\tH\tC\tD\tE\t".to_string(),    scale_finder('E', ' ', e_steps, "minor"));
 	 	assert_eq!("F\tG\tAb\tHb\tC\tDb\tEb\tF\t".to_string(), scale_finder('F', ' ', f_steps, "minor"));
 	 	assert_eq!("G\tA\tHb\tC\tD\tEb\tF\tG\t".to_string(),   scale_finder('G', ' ', g_steps, "minor"));
