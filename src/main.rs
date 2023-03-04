@@ -8,22 +8,6 @@ fn main() {
 	let array: [u8; 3] = [9, 8, 7];
 	let a = array.to_vec();
 	// println!("{:?}\n{:?}", array, a);
-	
-	// SPLIT ARRAY
-	let split_here = 3;
-	let array_2: [u8; 8] = [2, 2, 1, 2, 2, 2, 1, 2];
-	let (first, second) = array_2.split_at(split_here);
-	// println!("first {first:?}\nsecond{second:?}");
-
-	// COMBINE NEW SCALE AS A VEC
-	let mut vec_a: Vec<u8> = vec![];
-	for i in second {
-		vec_a.push(*i)
-	}
-	for i in first {
-		vec_a.push(*i)
-	}
-	// println!("Parts united: {:?}", vec_a);
 
 	// VEC TO ARRAY
 	let vektor: Vec<u8> = vec![1,2,3,4,5];
@@ -95,6 +79,12 @@ fn scale_finder(note_sequence: Vec<char>, note_steps: [u8; 8], scale: [u8; 8]) -
 #[cfg(test)]
 mod tests {
 	use super::*;
+
+	#[test]
+	fn test_sequence() {
+		assert_eq!(vec!['E', 'F', 'G', 'A', 'H', 'C', 'D'], sequencer('E', ' ', "minor".to_string()));
+		assert_eq!(vec!['A', 'H', 'C', 'D', 'E', 'F', 'G'], sequencer('A', ' ', "minor".to_string()))
+	}
 
 	#[test]
 	fn c_minor() {
