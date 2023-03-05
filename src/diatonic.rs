@@ -2,8 +2,27 @@ use crate::scales::*;
 
 #[allow(unused)]
 pub fn scale_finder(note: char, acc: char, scale: &str) -> String {
-	let (note_name, any_acc) = note_and_acc(note, acc);
+	let (mut note_name, any_acc) = note_and_acc(note, acc);
 	if note_name == ' ' {return "".to_string()}
+
+	let mut swap = false;
+	if note == 'E' && any_acc == '#' {
+		swap = true;
+		note_name = 'F'
+	}
+	if note == 'F' && any_acc == 'b' {
+		swap = true;
+		note_name = 'E'
+	}
+	if note == 'H' && any_acc == '#' {
+		swap = true;
+		note_name = 'C'
+	}
+
+	if note == 'C' && any_acc == 'b' {
+		swap = true;
+		note_name = 'H'
+	}
 
 	let scale_name = &scale[..];
 	let current_scale = match scale_name {
@@ -26,9 +45,9 @@ pub fn scale_finder(note: char, acc: char, scale: &str) -> String {
 	let mut shift_up = false;
 	let mut shift_down = false;
 
-	if any_acc == 'b' {
+	if any_acc == 'b' && !swap {
 		shift_down = true
-	} else if any_acc == '#' {
+	} else if any_acc == '#' && !swap {
 		shift_up = true
 	}
 	

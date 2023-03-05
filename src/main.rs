@@ -15,4 +15,16 @@ fn main() {
 	}
 
 	println!("C# dorian: \t{}", scale_finder('C', '#', "dorian"));
+
+	println!("Test wrong root note swap");
+	
+	println!("F  dorian: \t{}", scale_finder('F', ' ', "dorian"));
+	println!("E# dorian: \t{}", scale_finder('E', '#', "dorian"));
+	println!("E  dorian: \t{}", scale_finder('E', ' ', "dorian"));
+	println!("Fb dorian: \t{}", scale_finder('F', 'b', "dorian"));
+
+	println!("C  dorian: \t{}", scale_finder('C', ' ', "dorian"));
+	println!("H# dorian: \t{}", scale_finder('H', '#', "dorian"));
+	println!("H  dorian: \t{}", scale_finder('H', ' ', "dorian"));
+	println!("Cb dorian: \t{}", scale_finder('C', 'b', "dorian"));
 }

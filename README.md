@@ -11,7 +11,7 @@ Add flats or sharps if the current scale contains flats or sharps
 Find out how to implement some algorithms for calculating each of diatonic scales, fox example: E flat major, A minor.
 
 TODO:
-Convert wrong accidentals to correct ones for example C sharp major should be D flat major. Because we don't want to use weird cases like E sharp wich is F or Fb wich is E and C sharp witch is H and Hb wich is C.
+Convert wrong accidentals to correct ones for example C sharp major should be D flat major. Because we don't want to use weird cases like E sharp which is F or Fb which is E and C sharp which is H and Hb which is C.
 
 Note H is also known as B, but I really don't like B flat - Bb. So I use H instead.
 
