@@ -3,12 +3,15 @@ New version written from scratch. The old one is [here](https://github.com/anton
 I started this project at december 2021 after 1.5 month of studying Rust. Year later I made a brand new version. But the idea is the same: build any of 7 diatonic scales using sharps and flats.
 
 Done:
+
 Check if it flat or sharp scale
+
 Add flats or sharps if the current scale contains flats or sharps
 
+Find out how to implement some algorithms for calculating each of diatonic scales, fox example: E flat major, A minor.
+
 TODO:
-Goal n1 is to find out how to implement some algorithms for calculating each of diatonic scales, fox example: E flat major, A minor.
-Goal n2 convert wrong accidentals to correct ones for example C sharp major should be D flat major. Because we don't want to use weird cases like E sharp wich is F or Fb wich is E and C sharp witch is H and Hb wich is C.
+Convert wrong accidentals to correct ones for example C sharp major should be D flat major. Because we don't want to use weird cases like E sharp wich is F or Fb wich is E and C sharp witch is H and Hb wich is C.
 
 Note H is also known as B, but I really don't like B flat - Bb. So I use H instead.
 
