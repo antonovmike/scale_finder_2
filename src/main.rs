@@ -13,4 +13,6 @@ fn main() {
 			println!("{i}: \t{}", scale_finder(note, ' ', i));
 		}
 	}
+
+	println!("C# dorian: \t{}", scale_finder('C', '#', "dorian"));
 }

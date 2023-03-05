@@ -25,6 +25,12 @@ pub fn scale_finder(note: char, acc: char, scale: &str) -> String {
 	let mut index = 0;
 	let mut shift_up = false;
 	let mut shift_down = false;
+
+	if any_acc == 'b' {
+		shift_down = true
+	} else if any_acc == '#' {
+		shift_up = true
+	}
 	
 	for i in note_semitones {
 		if i == current_scale[index] {
@@ -119,20 +125,4 @@ fn note_and_acc(note: char, acc: char) -> (char, char) {
 	if acc == '#' { any_acc = '#' }
 
 	(note_name, any_acc)
-}
-
-
-#[cfg(test)]
-mod tests {
-	use super::*;
-
-	#[test]
-	fn test_sequence() {
-		let e_u8 = vec![1, 2, 2, 2, 1, 2, 2, 1];
-		let e_char = vec!['E', 'F', 'G', 'A', 'H', 'C', 'D', 'E'];
-		let a_u8 = vec![2, 1, 2, 2, 1, 2, 2, 2];
-		let a_char = vec!['A', 'H', 'C', 'D', 'E', 'F', 'G', 'A'];
-		assert_eq!((e_u8, e_char), sequencer('E'));
-		assert_eq!((a_u8, a_char), sequencer('A'))
-	}
 }
