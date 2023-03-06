@@ -94,10 +94,14 @@ pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
             }
         } else if i < current_scale[index] && !shift_up && !shift_down {
             empty_string = format!("{}{}", empty_string, note_sequence[index]);
+            // if any_acc != 'b' {shift_up = true}
+            // if any_acc == 'b' {shift_down = true}
             shift_up = true
         } else if i > current_scale[index] && !shift_up && !shift_down {
             empty_string = format!("{}{}", empty_string, note_sequence[index]);
-            shift_down = true
+            // if any_acc != '#' {shift_down = true}
+            // if any_acc == '#' {shift_up = true}
+            shift_down = true // ERROR - sharp turning into flat
         } else if i < current_scale[index] && shift_up && !shift_down {
             empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
         } else if i > current_scale[index] && shift_up && !shift_down {
