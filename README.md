@@ -2,17 +2,7 @@
 New version written from scratch. The old one is [here](https://github.com/antonovmike/scale_finder).
 I started this project at december 2021 after 1.5 month of studying Rust. Year later I made a brand new version. But the idea is the same: build any of 7 diatonic scales using sharps and flats.
 
-Done:
-
-Check if it flat or sharp scale
-
-Add flats or sharps if the current scale contains flats or sharps
-
-Find out how to implement some algorithms for calculating each of diatonic scales, fox example: E flat major, A minor.
-
-Convert wrong accidentals to correct ones for example C sharp major should be D flat major. Because we don't want to use weird cases like E sharp which is F or Fb which is E and C sharp which is H and Hb which is C.
-
-Note H is also known as B, but I really don't like B flat - Bb. So I use H instead.
+TODO: Error handlers
 
 Diatonic scales can be represented as a matrix. Each scale has 7 steps. Distance between steps can be 1 or 2 semitones. Each diatonic scale has only two 1 semitone steps and five 2 semitone steps. The sequence is always 2,2,1,2,2,2,1 and just shifted one step for each next scale. In the end of scale there is always an additional step - the 1 step.
 ```bash
