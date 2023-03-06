@@ -3,12 +3,8 @@ use crate::scales::*;
 #[allow(unused)]
 pub fn scale_finder(note: char, acc: char, scale: &str) -> String {
     let (mut note_name, any_acc) = note_and_acc(note, acc);
-    if note_name == 'X' {
-        return "".to_string();
-    }
-    if any_acc == 'X' {
-        return "".to_string();
-    }
+    if note_name == 'X' { return "".to_string() }
+    if any_acc   == 'X' { return "".to_string() }
 
     let mut swap = false;
     if note == 'E' && any_acc == '#' {
@@ -49,11 +45,9 @@ pub fn scale_finder(note: char, acc: char, scale: &str) -> String {
     let mut shift_up = false;
     let mut shift_down = false;
 
-    if any_acc == 'b' && !swap {
-        shift_down = true
-    } else if any_acc == '#' && !swap {
-        shift_up = true
-    }
+    if any_acc == 'b' && !swap { shift_down = true } 
+	if any_acc == '#' && !swap { shift_up   = true }
+
     for i in note_semitones {
         if i == current_scale[index] {
             if !shift_down && !shift_up {
@@ -110,13 +104,10 @@ fn sequencer(note_name: char) -> (Vec<u8>, Vec<char>) {
 
     let note_sequence_tuple = b;
     let mut note_semitones: Vec<u8> = vec![];
-    for i in note_sequence_tuple.clone() {
-        note_semitones.push(i.1)
-    }
+    for i in note_sequence_tuple.clone() { note_semitones.push(i.1) }
+
     let mut note_sequence: Vec<char> = vec![];
-    for i in note_sequence_tuple {
-        note_sequence.push(i.0)
-    }
+    for i in note_sequence_tuple { note_sequence.push(i.0) }
 
     (note_semitones, note_sequence)
 }
@@ -132,23 +123,15 @@ fn note_and_acc(note: char, acc: char) -> (char, char) {
         .next()
         .expect("string is empty");
     let mut note_name: char = ' ';
-    if "CDEFGAH".contains(note_upper) {
-        note_name = note_upper
-    } else if note_upper == 'B' {
-        note_name = 'H'
-    } else {
-        note_name = 'X'
-    }
+
+    if "CDEFGAH".contains(note_upper) { note_name = note_upper } 
+	else if note_upper == 'B' { note_name = 'H' } 
+	else { note_name = 'X' }
+
     let mut any_acc = 'X';
-    if acc == 'b' || acc == 'B' {
-        any_acc = 'b'
-    }
-    if acc == '#' {
-        any_acc = '#'
-    }
-    if acc == ' ' {
-        any_acc = ' '
-    }
+    if acc == 'b' || acc == 'B' { any_acc = 'b' }
+    if acc == '#' { any_acc = '#' }
+    if acc == ' ' { any_acc = ' ' }
 
     (note_name, any_acc)
 }
