@@ -1,0 +1,96 @@
+Major / Ionian  	C		D		E	F		G		A		H	C
+Dorian  			C		D	Eb		F		G		A	Hb		C
+Phrygian		    C	Db		Eb		F		G	Ab		Hb		C
+Lydian  			C		D		E		F#	G		A		H	C
+Mixolydian  		C		D		E	F		G		A	Hb		C
+Minor / Aeolian 	C		D	Eb		F		G	Ab		Hb		C
+Locrian 		    C	Db		Eb		F	Gb		Ab		Hb		C
+													
+Major / Ionian  	Db		Eb		F	Gb		Ab		Hb		C	Db
+Dorian  	        C#		D#	E		F#		G#		A#	H		C#
+Phrygian   	        C#	D		E		F#		G#	A		H		C#
+Lydian  	        Db		Eb		F		G	Ab		Hb		C	Db
+Mixolydian  	    C#		D#		E#	F#		G#		A#	H		C#
+Minor / Aeolian 	C#		D#	E		F#		G#	A		H		C#
+Locrian 	        C#	D		E		F#	G		A		H		C#
+													
+Major / Ionian  	D		E		F#	G		A		H		C#	D
+Dorian  			D		E	F		G		A		H	C		D
+Phrygian		    D	Eb		F		G		A	Hb		C		D
+Lydian  			D		E		F#		G#	A		H		C#	D
+Mixolydian  		D		E		F#	G		A		H	C		D
+Minor / Aeolian 	D		E	F		G		A	Hb		C		D
+Locrian 		    D	Eb		F		G	Ab		Hb		C		D
+													
+Major / Ionian  	Eb		F		G	Ab		Hb		C		D	Eb
+Dorian  	        Eb		F	Gb		Ab		Hb		C	Db		Eb
+Phrygian	        D#	E		F#		G#		A#	H		C#		D#
+Lydian  	        Eb		F		G		A	Hb		C		D	Eb
+Mixolydian  	    Eb		F		G	Ab		Hb		C	Db		Eb
+Minor / Aeolian 	Eb		F	Gb		Ab		Hb	Cb		Db		Eb
+Locrian 	        D#	E		F#		G#	A		H		C#		D#
+													
+Major / Ionian  	E		F#		G#	A		H		C#		D#	E
+Dorian  			E		F#	G		A		H		C#	D		E
+Phrygian		    E	F		G		A		H	C		D		E
+Lydian  			E		F#		G#		A#	H		C#		D#	E
+Mixolydian  		E		F#		G#	A		H		C#	D		E
+Minor / Aeolian 	E		F#	G		A		H	C		D		E
+Locrian 		    E	F		G		A	Hb		C		D		E
+													
+Major / Ionian  	F		G		A	Hb		C		D		E	F
+Dorian  			F		G	Ab		Hb		C		D	Eb		F
+Phrygian		    F	Gb		Ab		Hb		C	Db		Eb		F
+Lydian  		    F		G		A		H	C		D		E	F
+Mixolydian  		F		G		A	Hb		C		D	Eb		F
+Minor / Aeolian 	F		G	Ab		Hb		C	Db		Eb		F
+Locrian 		    F	Gb		Ab		Hb	H		Db		Eb		F
+													
+Major / Ionian  	Gb		Ab		Hb	Cb		Db		Eb		F	Gb
+Dorian  	        F#		G#	A		H		C#		D#	E		F#
+Phrygian	        F#	G		A		H		C#	D		E		F#
+Lydian  	        Gb		Ab		Hb		C	Db		Eb		F	Gb
+Mixolydian  	    Gb		Ab		Hb	Cb		Db		Eb	Fb		Gb
+Minor / Aeolian 	F#		G#	A		H		C#	D		E		F#
+Locrian 	        F#	G		A		H	C		D		E		F#
+													
+Major / Ionian  	G		A		H	C		D		E		F#	G
+Dorian  			G		A	Hb		C		D		E	F		G
+Phrygian		    G	Ab		Hb		C		D	Eb		F		G
+Lydian  			G		A		H		C#	D		E		F#	G
+Mixolydian  		G		A		H	C		D		E	F		G
+Minor / Aeolian 	G		A	Hb		C		D	Eb		F		G
+Locrian 		    G	Ab		Hb		C	Db		Eb		F		G
+													
+Major / Ionian  	Ab		Hb		C	Db		Eb		F		G	Ab
+Dorian  	        Ab		Hb	Cb		Db		Eb		F	Gb		Ab
+Phrygian	        G#	A		H		C#		D#	E		F#		G#
+Lydian  	        Ab		Hb		C		D	Eb		F		G	Ab
+Mixolydian  	    Ab		Hb		C	Db		Eb		F	Gb		Ab
+Minor / Aeolian 	G#		A#	H		C#		D#	E		F#		G#
+Locrian 	        G#	A		H		C#	D		E		F#		G#
+													
+Major / Ionian  	A		H		C#	D		E		F#		G#	A
+Dorian  			A		H	C		D		E		F#	G		A
+Phrygian		    A	Hb		C		D		E	F		G		A
+Lydian  			A		H		C#		D#	E		F#		G#	A
+Mixolydian  		A		H		C#	D		E		F#	G		A
+Minor / Aeolian 	A		H	C		D		E	F		G		A
+Locrian 		    A		Hb		C		D	Eb		F		G	A	
+													
+Major / Ionian  	Hb		C		D	Eb		F		G		A	Hb
+Dorian  	        Hb		C	Db		Eb		F		G	Ab		Hb
+Phrygian	        A#	H		C#		D#		E#	F#		G#		A#
+Lydian  	        Hb		C		D		E	F		G		A	Hb
+Mixolydian  	    Hb		C		D	Eb		F		G	Ab		Hb
+Minor / Aeolian 	Hb		C	Db		Eb		F	Gb		Ab		Hb
+Locrian 	        A#	H		C#		D#	E		F#		G#		A#
+													
+Major / Ionian  	H		C#		D#	E		F#		G#		A#	H
+Dorian  			H		C#	D		E		F#		G#	A		H
+Phrygian   		    H	C		D		E		F#	G		A		H
+Lydian  			H		C#		D#		F	F#		G#		A#	H
+Mixolydian  		H		C#		D#	E		F#		G#	A		H
+Minor / Aeolian 	H		C#	D		E		F#	G		A		H
+Locrian 		    H	C		D		E	F		G		A		H
+
