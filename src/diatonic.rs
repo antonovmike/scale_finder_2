@@ -1,7 +1,38 @@
 use crate::scales::*;
 
+pub fn octave() -> String {
+    "C  D  E F  G  A  H C\n2  2  1 2  2  2  1 2".to_string()
+}
+
+pub fn semitones(scale: &str) -> String {
+    let current_scale = match &scale.to_lowercase()[..] {
+        "major" => MAJOR_IONIAN,
+        "ionian" => MAJOR_IONIAN,
+        "dorian" => DORIAN,
+        "phrygian" => PHRYGIAN,
+        "lydian" => LYDIAN,
+        "mixolydian" => MIXOLYDIAN,
+        "minor" => MINOR_AEOLIAN,
+        "aeolian" => MINOR_AEOLIAN,
+        "locrian" => LOCRIAN,
+        &_ => [0, 0, 0, 0, 0, 0, 0, 0],
+    };
+    let mut answer = "".to_string();
+    for i in current_scale {
+        if i == 1 {
+            answer.push('1');
+            answer.push(' ')
+        } else {
+            answer.push('2');
+            answer.push(' ');
+            answer.push(' ')
+        };
+    }
+    format!("{}: {}", scale.to_uppercase(), answer)
+}
+
 #[allow(unused)]
-pub fn scale_finder(note: char, acc: char, scale: &str) -> String {
+pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
     let (mut note_name, any_acc) = note_and_acc(note, acc);
     if note_name == 'X' { return "".to_string() }
     if any_acc   == 'X' { return "".to_string() }
