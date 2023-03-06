@@ -9,7 +9,18 @@ mod tests {
 
 	#[test]
 	fn wrong_char() {
-		assert_eq!("".to_string(), scale_finder('Q', ' ', "minor"))
+		assert_eq!("".to_string(), scale_finder('Q', ' ', "minor"));
+		assert_eq!("".to_string(), scale_finder('Q', 'b', "minor"));
+		assert_eq!("".to_string(), scale_finder('C', 'Q', "minor"));
+		assert_eq!("".to_string(), scale_finder('Q', 'Q', "minor"));
+	}
+
+	#[test]
+	fn swap_wrong_root() {
+		assert_eq!("F\tG\tAb\tHb\tC\tD\tEb\tF\t".to_string(),    scale_finder('E', '#', "dorian"));
+		assert_eq!("E\tF\tG\tA\tH\tC\tD\tE\t".to_string(),       scale_finder('F', 'b', "phrygian"));
+		assert_eq!("C\tD\tE\tF\tG\tA\tHb\tC\t".to_string(),      scale_finder('H', '#', "mixolydian"));
+		assert_eq!("H\tC#\tD#\tE#\tF#\tG#\tA#\tH\t".to_string(), scale_finder('C', 'b', "lydian"));
 	}
 
 	#[test]

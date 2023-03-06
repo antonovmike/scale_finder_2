@@ -3,7 +3,8 @@ use crate::scales::*;
 #[allow(unused)]
 pub fn scale_finder(note: char, acc: char, scale: &str) -> String {
 	let (mut note_name, any_acc) = note_and_acc(note, acc);
-	if note_name == ' ' {return "".to_string()}
+	if note_name == 'X' {return "".to_string()}
+	if any_acc == 'X' {return "".to_string()}
 
 	let mut swap = false;
 	if note == 'E' && any_acc == '#' {
@@ -129,19 +130,20 @@ fn sequencer(note_name: char) -> (Vec<u8>, Vec<char>) {
 // Check for accidentals: flat and sharp
 #[allow(unused)]
 fn note_and_acc(note: char, acc: char) -> (char, char) {
-	let upper = note.to_uppercase().to_string().chars().next().expect("string is empty");
+	let note_upper = note.to_uppercase().to_string().chars().next().expect("string is empty");
 	let mut note_name: char = ' ';
-	if "CDEFGAH".contains(upper) {
-		note_name = upper
-	} else if upper == 'B' {
+	if "CDEFGAH".contains(note_upper) {
+		note_name = note_upper
+	} else if note_upper == 'B' {
 		note_name = 'H'
 	} else {
-		note_name = ' '
+		note_name = 'X'
 	}
 	
-	let mut any_acc = ' ';
+	let mut any_acc = 'X';
 	if acc == 'b' || acc == 'B' { any_acc = 'b'  }
 	if acc == '#' { any_acc = '#' }
+	if acc == ' ' { any_acc = ' ' }
 
 	(note_name, any_acc)
 }
