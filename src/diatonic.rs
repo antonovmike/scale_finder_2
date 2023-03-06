@@ -1,9 +1,11 @@
 use crate::scales::*;
 
+#[allow(unused)]
 pub fn octave() -> String {
     "C  D  E F  G  A  H C\n2  2  1 2  2  2  1 2".to_string()
 }
 
+#[allow(unused)]
 pub fn semitones(scale: &str) -> String {
     let current_scale = match &scale.to_lowercase()[..] {
         "major" => MAJOR_IONIAN,
@@ -57,15 +59,15 @@ pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
     }
 
     let current_scale = match scale {
-        "major" => MAJOR_IONIAN,
-        "ionian" => MAJOR_IONIAN,
-        "dorian" => DORIAN,
-        "phrygian" => PHRYGIAN,
-        "lydian" => LYDIAN,
+        "major"      => MAJOR_IONIAN,
+        "ionian"     => MAJOR_IONIAN,
+        "dorian"     => DORIAN,
+        "phrygian"   => PHRYGIAN,
+        "lydian"     => LYDIAN,
         "mixolydian" => MIXOLYDIAN,
-        "minor" => MINOR_AEOLIAN,
-        "aeolian" => MINOR_AEOLIAN,
-        "locrian" => LOCRIAN,
+        "minor"      => MINOR_AEOLIAN,
+        "aeolian"    => MINOR_AEOLIAN,
+        "locrian"    => LOCRIAN,
         &_ => [0, 0, 0, 0, 0, 0, 0, 0],
     };
 
@@ -84,10 +86,10 @@ pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
             if !shift_down && !shift_up {
                 empty_string = format!("{}{}", empty_string, note_sequence[index]);
             }
-            if shift_down {
+            if shift_down && !shift_up {
                 empty_string = format!("{}{}{}", empty_string, note_sequence[index], 'b');
             }
-            if shift_up {
+            if shift_up && !shift_down {
                 empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
             }
         } else if i < current_scale[index] && !shift_up && !shift_down {
@@ -109,7 +111,32 @@ pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
         }
         index += 1
     }
-    empty_string
+
+    // let wrong_root = match note {
+    //     'C' => ('C', 2),
+    //     'D' => ('D', 2),
+    //     'G' => ('G', 2),
+    //     'A' => ('A', 2),
+    //     _ => ('X', 0)
+    // };
+    // find this note's index in OCTAVE_STEPS
+    // find next note after the current
+    // run scale_builder with flat root note
+    // if empty_string.contains("E#") {
+    //     let nn = OCTAVE_STEPS.binary_search(&wrong_root).unwrap();
+    //     let n = if nn == 6 { OCTAVE_STEPS[1].0 } else { OCTAVE_STEPS[nn+1].0 };
+    //     scale_builder(n, 'b', scale)
+    // } else if empty_string.contains("Fb") {
+        // return "ERROR Fb".to_string()
+    // } else if empty_string.contains("H#") {
+    //     let nn = OCTAVE_STEPS.binary_search(&wrong_root).unwrap();
+    //     let n = if nn == 6 { OCTAVE_STEPS[1].0 } else { OCTAVE_STEPS[nn+1].0 };
+    //     scale_builder(n, 'b', scale)
+    // } else if empty_string.contains("Cb") {
+    //     return "ERROR Cb".to_string()
+    // } else {return empty_string}
+
+    return empty_string
 }
 
 fn sequencer(note_name: char) -> (Vec<u8>, Vec<char>) {
