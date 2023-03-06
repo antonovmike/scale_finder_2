@@ -39,24 +39,19 @@ pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
     if note_name == 'X' { return "".to_string() }
     if any_acc   == 'X' { return "".to_string() }
 
-    let mut swap = false;
     if note == 'E' && any_acc == '#' {
-        swap = true;
         any_acc = ' ';
         note_name = 'F'
     }
     if note == 'F' && any_acc == 'b' {
-        swap = true;
         any_acc = ' ';
         note_name = 'E'
     }
     if note == 'H' && any_acc == '#' {
-        swap = true;
         any_acc = ' ';
         note_name = 'C'
     }
     if note == 'C' && any_acc == 'b' {
-        swap = true;
         any_acc = ' ';
         note_name = 'H'
     }
@@ -76,22 +71,14 @@ pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
 
     let (note_semitones, note_sequence) = sequencer(note_name);
 
-    let mut empty_string = "".to_string();
-    let mut index = 0;
-    let mut shift_up = false;
-    let mut shift_down = false;
-
-    if any_acc == 'b' && !swap { shift_down = true } 
-	if any_acc == '#' && !swap { shift_up   = true }
-
     if any_acc == ' ' {
         return root_clean(note_semitones, note_sequence, current_scale)
     }
     if any_acc == '#' {
-        return root_sharp(note_semitones, note_sequence, swap, any_acc, current_scale)
+        return root_sharp(note_semitones, note_sequence, current_scale)
     }
     if any_acc == 'b' {
-        return root_flat(note_semitones, note_sequence, swap, any_acc, current_scale)
+        return root_flat(note_semitones, note_sequence, current_scale)
     }
 
     // let wrong_root = match note {
@@ -118,7 +105,7 @@ pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
     //     return "ERROR Cb".to_string()
     // } else {return empty_string}
 
-    return empty_string
+    return "".to_string()
 }
 
 fn root_clean(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: [u8; 8]) -> String {
@@ -160,7 +147,7 @@ fn root_clean(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: 
     empty_string
 }
 
-fn root_sharp(note_semitones: Vec<u8>, note_sequence: Vec<char>, swap: bool, any_acc: char, current_scale: [u8; 8]) -> String {
+fn root_sharp(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: [u8; 8]) -> String {
     let mut empty_string = "".to_string();
     let mut index = 0;
     let mut shift_up = true;
@@ -191,7 +178,7 @@ fn root_sharp(note_semitones: Vec<u8>, note_sequence: Vec<char>, swap: bool, any
     empty_string
 }
 
-fn root_flat(note_semitones: Vec<u8>, note_sequence: Vec<char>, swap: bool, any_acc: char, current_scale: [u8; 8]) -> String {
+fn root_flat(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: [u8; 8]) -> String {
     let mut empty_string = "".to_string();
     let mut index = 0;
     let mut shift_down = true;

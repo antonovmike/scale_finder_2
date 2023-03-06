@@ -6,12 +6,12 @@ fn main() {
     let note = 'C';
     let modes = [
         "major",
-        "ionian",
+        // "ionian",
         "dorian",
         "phrygian",
         "lydian",
         "mixolyd",
-        "aeolian",
+        // "aeolian",
         "minor",
         "locrian",
     ];
