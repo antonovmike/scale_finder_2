@@ -194,34 +194,24 @@ fn root_sharp(note_semitones: Vec<u8>, note_sequence: Vec<char>, swap: bool, any
 fn root_flat(note_semitones: Vec<u8>, note_sequence: Vec<char>, swap: bool, any_acc: char, current_scale: [u8; 8]) -> String {
     let mut empty_string = "".to_string();
     let mut index = 0;
-    let mut shift_up = false;
     let mut shift_down = true;
 
     for i in note_semitones {
         if i == current_scale[index] {
-            if !shift_down && !shift_up {
+            if !shift_down {
                 empty_string = format!("{}{}", empty_string, note_sequence[index]);
             }
-            if shift_down && !shift_up {
+            if shift_down {
                 empty_string = format!("{}{}{}", empty_string, note_sequence[index], 'b');
             }
-            if shift_up && !shift_down {
-                empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
-            }
-        } else if i < current_scale[index] && !shift_up && !shift_down {
+        } else if i < current_scale[index] && !shift_down {
             empty_string = format!("{}{}", empty_string, note_sequence[index]);
-            shift_up = true
-        } else if i > current_scale[index] && !shift_up && !shift_down {
+        } else if i > current_scale[index] && !shift_down {
             empty_string = format!("{}{}", empty_string, note_sequence[index]);
-            shift_down = true // ERROR - sharp turning into flat
-        } else if i < current_scale[index] && shift_up && !shift_down {
-            empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
-        } else if i > current_scale[index] && shift_up && !shift_down {
-            empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
-            shift_up = false
-        } else if i > current_scale[index] && shift_down && !shift_up {
+            shift_down = true
+        } else if i > current_scale[index] && shift_down {
             empty_string = format!("{}{}{}", empty_string, note_sequence[index], 'b');
-        } else if i < current_scale[index] && shift_down && !shift_up {
+        } else if i < current_scale[index] && shift_down {
             empty_string = format!("{}{}{}", empty_string, note_sequence[index], 'b');
             shift_down = false
         }
