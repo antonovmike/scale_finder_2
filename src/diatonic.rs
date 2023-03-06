@@ -164,38 +164,30 @@ fn root_sharp(note_semitones: Vec<u8>, note_sequence: Vec<char>, swap: bool, any
     let mut empty_string = "".to_string();
     let mut index = 0;
     let mut shift_up = true;
-    let mut shift_down = false;
 
     for i in note_semitones {
         if i == current_scale[index] {
             if !shift_up {
                 empty_string = format!("{}{}", empty_string, note_sequence[index]);
             }
-            if shift_down && !shift_up {
-                empty_string = format!("{}{}{}", empty_string, note_sequence[index], 'b');
-            }
-            if shift_up && !shift_down {
+            if shift_up {
                 empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
             }
-        } else if i < current_scale[index] && !shift_up && !shift_down {
+        } else if i < current_scale[index] && !shift_up {
             empty_string = format!("{}{}", empty_string, note_sequence[index]);
             shift_up = true
-        } else if i > current_scale[index] && !shift_up && !shift_down {
+        } else if i > current_scale[index] && !shift_up {
             empty_string = format!("{}{}", empty_string, note_sequence[index]);
-            shift_down = true // ERROR - sharp turning into flat
-        } else if i < current_scale[index] && shift_up && !shift_down {
+        } else if i < current_scale[index] && shift_up {
             empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
-        } else if i > current_scale[index] && shift_up && !shift_down {
+        } else if i > current_scale[index] && shift_up {
             empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
             shift_up = false
-        } else if i > current_scale[index] && shift_down && !shift_up {
-            empty_string = format!("{}{}{}", empty_string, note_sequence[index], 'b');
-        } else if i < current_scale[index] && shift_down && !shift_up {
-            empty_string = format!("{}{}{}", empty_string, note_sequence[index], 'b');
-            shift_down = false
         }
+
         index += 1
     }
+
     empty_string
 }
 
