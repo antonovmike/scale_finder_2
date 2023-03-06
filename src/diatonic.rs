@@ -29,8 +29,7 @@ pub fn scale_finder(note: char, acc: char, scale: &str) -> String {
         note_name = 'H'
     }
 
-    let scale_name = &scale[..];
-    let current_scale = match scale_name {
+    let current_scale = match scale {
         "major" => MAJOR_IONIAN,
         "ionian" => MAJOR_IONIAN,
         "dorian" => DORIAN,
