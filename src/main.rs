@@ -20,11 +20,11 @@ fn main() {
 	
 	println!("F  dorian: \t{}", scale_finder('F', ' ', "dorian"));
 	println!("E# dorian: \t{}", scale_finder('E', '#', "dorian"));
-	println!("E  dorian: \t{}", scale_finder('E', ' ', "dorian"));
-	println!("Fb dorian: \t{}", scale_finder('F', 'b', "dorian"));
+	println!("E  phrygian: \t{}", scale_finder('E', ' ', "phrygian"));
+	println!("Fb phrygian: \t{}", scale_finder('F', 'b', "phrygian"));
 
-	println!("C  dorian: \t{}", scale_finder('C', ' ', "dorian"));
-	println!("H# dorian: \t{}", scale_finder('H', '#', "dorian"));
-	println!("H  dorian: \t{}", scale_finder('H', ' ', "dorian"));
-	println!("Cb dorian: \t{}", scale_finder('C', 'b', "dorian"));
+	println!("C  mixolydian: \t{}", scale_finder('C', ' ', "mixolydian"));
+	println!("H# mixolydian: \t{}", scale_finder('H', '#', "mixolydian"));
+	println!("H  lydian: \t{}", scale_finder('H', ' ', "lydian"));
+	println!("Cb lydian: \t{}", scale_finder('C', 'b', "lydian"));
 }
