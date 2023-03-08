@@ -4,8 +4,6 @@ I started this project at december 2021 after 1.5 month of studying Rust. Year l
 
 TODO: Error handlers
 
-FIX: check flat and sharp root notes
-
 Diatonic scales can be represented as a matrix. Each scale has 7 steps. Distance between steps can be 1 or 2 semitones. Each diatonic scale has only two 1 semitone steps and five 2 semitone steps. The sequence is always 2,2,1,2,2,2,1 and just shifted one step for each next scale. In the end of scale there is always an additional step - the 1 step.
 ```bash
 Step\'s number    1  2  3  4  5  6  7  1

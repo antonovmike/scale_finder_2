@@ -81,30 +81,6 @@ pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
         return root_flat(note_semitones, note_sequence, current_scale)
     }
 
-    // let wrong_root = match note {
-    //     'C' => ('C', 2),
-    //     'D' => ('D', 2),
-    //     'G' => ('G', 2),
-    //     'A' => ('A', 2),
-    //     _ => ('X', 0)
-    // };
-    // find this note's index in OCTAVE_STEPS
-    // find next note after the current
-    // run scale_builder with flat root note
-    // if empty_string.contains("E#") {
-    //     let nn = OCTAVE_STEPS.binary_search(&wrong_root).unwrap();
-    //     let n = if nn == 6 { OCTAVE_STEPS[1].0 } else { OCTAVE_STEPS[nn+1].0 };
-    //     scale_builder(n, 'b', scale)
-    // } else if empty_string.contains("Fb") {
-        // return "ERROR Fb".to_string()
-    // } else if empty_string.contains("H#") {
-    //     let nn = OCTAVE_STEPS.binary_search(&wrong_root).unwrap();
-    //     let n = if nn == 6 { OCTAVE_STEPS[1].0 } else { OCTAVE_STEPS[nn+1].0 };
-    //     scale_builder(n, 'b', scale)
-    // } else if empty_string.contains("Cb") {
-    //     return "ERROR Cb".to_string()
-    // } else {return empty_string}
-
     return "".to_string()
 }
 
@@ -130,7 +106,7 @@ fn root_clean(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: 
             shift_up = true
         } else if i > current_scale[index] && !shift_up && !shift_down {
             empty_string = format!("{}{}", empty_string, note_sequence[index]);
-            shift_down = true // ERROR - sharp turning into flat
+            shift_down = true
         } else if i < current_scale[index] && shift_up && !shift_down {
             empty_string = format!("{}{}{}", empty_string, note_sequence[index], '#');
         } else if i > current_scale[index] && shift_up && !shift_down {

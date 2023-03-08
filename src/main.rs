@@ -15,36 +15,36 @@ fn main() {
         "minor",
         "locrian",
     ];
-    // println!("Root note clean");
-    // for i in modes {
-	// 	    println!("{i}:   \t{}", scale_builder(note, ' ', i));
-    // }
-    println!("Root note sharp");
+    println!("\tRoot note clean");
+    for i in modes {
+		    println!("{i}:   \t{}", scale_builder(note, ' ', i));
+    }
+    println!("\tRoot note sharp");
     for i in modes {
         println!("{i}:   \t{}", scale_builder(note, '#', i));
     }
-    println!("Root note flat");
+    println!("\tRoot note flat");
     for i in modes {
         println!("{i}:   \t{}", scale_builder('d', 'b', i));
     }
 
 
-    // println!("C# major:   \t{}", scale_builder('C', '#', "major"));
-    // println!("C# lydian:   \t{}", scale_builder('C', '#', "lydian"));
+    println!("C# major:   \t{}", scale_builder('C', '#', "major"));
+    println!("C# lydian:   \t{}", scale_builder('C', '#', "lydian"));
 
-    // println!("Test wrong root note swap");
+    println!("\tTest wrong root note swap");
 
-    // println!("F  dorian: \t{}", scale_builder('F', ' ', "dorian"));
-    // println!("E# dorian: \t{}", scale_builder('E', '#', "dorian"));
-    // println!("E  phrygian: \t{}", scale_builder('E', ' ', "phrygian"));
-    // println!("Fb phrygian: \t{}", scale_builder('F', 'b', "phrygian"));
+    println!("F  dorian: \t{}", scale_builder('F', ' ', "dorian"));
+    println!("E# dorian: \t{}", scale_builder('E', '#', "dorian"));
+    println!("E  phrygian: \t{}", scale_builder('E', ' ', "phrygian"));
+    println!("Fb phrygian: \t{}", scale_builder('F', 'b', "phrygian"));
 
-    // println!("C  mixolydian: \t{}", scale_builder('C', ' ', "mixolydian"));
-    // println!("H# mixolydian: \t{}", scale_builder('H', '#', "mixolydian"));
-    // println!("H  lydian: \t{}", scale_builder('H', ' ', "lydian"));
-    // println!("Cb lydian: \t{}", scale_builder('C', 'b', "lydian"));
+    println!("C  mixolydian: \t{}", scale_builder('C', ' ', "mixolydian"));
+    println!("H# mixolydian: \t{}", scale_builder('H', '#', "mixolydian"));
+    println!("H  lydian: \t{}", scale_builder('H', ' ', "lydian"));
+    println!("Cb lydian: \t{}", scale_builder('C', 'b', "lydian"));
 
-    // println!("{}", octave());
+    println!("{}", octave());
 
-    // println!("{}", semitones("majoR"))
+    println!("{}", semitones("majoR"))
 }
