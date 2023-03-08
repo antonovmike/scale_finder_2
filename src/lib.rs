@@ -158,4 +158,9 @@ mod tests {
         assert_eq!("HbCDbEbFGbAbHb".to_string(),  scale_builder('H', 'b', "Minor"));
         assert_eq!("A#HC#D#EF#G#A#".to_string(),  scale_builder('A', '#', "Locrian"));
     }
+
+    // #[test]
+    // fn unpredictable_wrong_roots() {
+    //     assert_eq!("A#HC#D#EF#G#A#".to_string(),  scale_builder('H', 'b', "Locrian"));
+    // }
 }
