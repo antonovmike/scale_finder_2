@@ -44,7 +44,7 @@ Phrygian		    F	Gb		Ab		Hb		C	Db		Eb		F
 Lydian  		    F		G		A		H	C		D		E	F
 Mixolydian  		F		G		A	Hb		C		D	Eb		F
 Minor / Aeolian 	F		G	Ab		Hb		C	Db		Eb		F
-Locrian 		    F	Gb		Ab		Hb	H		Db		Eb		F
+Locrian 		    F	Gb		Ab		Hb	C		Db		Eb		F
 													
 Major / Ionian  	Gb		Ab		Hb	Cb		Db		Eb		F	Gb
 Dorian  	        F#		G#	A		H		C#		D#	E		F#
@@ -89,7 +89,7 @@ Locrian 	        A#	H		C#		D#	E		F#		G#		A#
 Major / Ionian  	H		C#		D#	E		F#		G#		A#	H
 Dorian  			H		C#	D		E		F#		G#	A		H
 Phrygian   		    H	C		D		E		F#	G		A		H
-Lydian  			H		C#		D#		F	F#		G#		A#	H
+Lydian  			H		C#		D#		E#	F#		G#		A#	H
 Mixolydian  		H		C#		D#	E		F#		G#	A		H
 Minor / Aeolian 	H		C#	D		E		F#	G		A		H
 Locrian 		    H	C		D		E	F		G		A		H

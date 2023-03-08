@@ -56,7 +56,7 @@ pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
         note_name = 'H'
     }
 
-    let current_scale = match scale {
+    let current_scale = match &scale.to_lowercase()[..] {
         "major"      => MAJOR_IONIAN,
         "ionian"     => MAJOR_IONIAN,
         "dorian"     => DORIAN,
