@@ -78,7 +78,7 @@ pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
         return root_sharp(note_semitones, note_sequence, current_scale, scale)
     }
     if any_acc == 'b' {
-        return root_flat(note_semitones, note_sequence, current_scale)
+        return root_flat(note_semitones, note_sequence, current_scale, scale)
     }
 
     return "".to_string()
@@ -162,7 +162,7 @@ fn root_sharp(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: 
     empty_string
 }
 
-fn root_flat(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: [u8; 8]) -> String {
+fn root_flat(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: [u8; 8], scale: &str) -> String {
     let mut empty_string = "".to_string();
     let mut index = 0;
     let mut shift_down = true;
@@ -188,6 +188,15 @@ fn root_flat(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: [
         }
         index += 1
     }
+
+    if empty_string.contains("Cb") || empty_string.contains("Fb") {
+        let n = empty_string[..1].to_string().chars().next().expect("string is empty");
+        let wrong_root = get_wrong_root(n);
+        let nn = OCTAVE_STEPS.iter().position(|&r| r == wrong_root).unwrap();
+        let n2 = if nn == 0 { OCTAVE_STEPS[6].0 } else { OCTAVE_STEPS[nn-1].0 };
+        return scale_builder(n2, '#', scale);
+    }
+
     empty_string
 }
 
