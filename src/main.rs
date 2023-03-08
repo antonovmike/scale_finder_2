@@ -19,14 +19,14 @@ fn main() {
     // for i in modes {
 	// 	    println!("{i}:   \t{}", scale_builder(note, ' ', i));
     // }
-    println!("Root note sharp");
-    for i in modes {
-        println!("{i}:   \t{}", scale_builder(note, '#', i));
-    }
-    println!("Root note flat");
-    for i in modes {
-        println!("{i}:   \t{}", scale_builder('d', 'b', i));
-    }
+    // println!("Root note sharp");
+    // for i in modes {
+    //     println!("{i}:   \t{}", scale_builder(note, '#', i));
+    // }
+    // println!("Root note flat");
+    // for i in modes {
+    //     println!("{i}:   \t{}", scale_builder('d', 'b', i));
+    // }
 
 
     // println!("C# major:   \t{}", scale_builder('C', '#', "major"));
@@ -47,4 +47,7 @@ fn main() {
     // println!("{}", octave());
 
     // println!("{}", semitones("majoR"))
+
+    println!("DbEbFGbAbHbCDb\n{}", scale_builder('C', '#', "Major"));
+    println!("DbEbFGAbHbCDb\n{}", scale_builder('C', '#', "LYDIAN"));
 }

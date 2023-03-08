@@ -75,35 +75,11 @@ pub fn scale_builder(note: char, acc: char, scale: &str) -> String {
         return root_clean(note_semitones, note_sequence, current_scale)
     }
     if any_acc == '#' {
-        return root_sharp(note_semitones, note_sequence, current_scale)
+        return root_sharp(note_semitones, note_sequence, current_scale, scale)
     }
     if any_acc == 'b' {
         return root_flat(note_semitones, note_sequence, current_scale)
     }
-
-    // let wrong_root = match note {
-    //     'C' => ('C', 2),
-    //     'D' => ('D', 2),
-    //     'G' => ('G', 2),
-    //     'A' => ('A', 2),
-    //     _ => ('X', 0)
-    // };
-    // find this note's index in OCTAVE_STEPS
-    // find next note after the current
-    // run scale_builder with flat root note
-    // if empty_string.contains("E#") {
-    //     let nn = OCTAVE_STEPS.binary_search(&wrong_root).unwrap();
-    //     let n = if nn == 6 { OCTAVE_STEPS[1].0 } else { OCTAVE_STEPS[nn+1].0 };
-    //     scale_builder(n, 'b', scale)
-    // } else if empty_string.contains("Fb") {
-        // return "ERROR Fb".to_string()
-    // } else if empty_string.contains("H#") {
-    //     let nn = OCTAVE_STEPS.binary_search(&wrong_root).unwrap();
-    //     let n = if nn == 6 { OCTAVE_STEPS[1].0 } else { OCTAVE_STEPS[nn+1].0 };
-    //     scale_builder(n, 'b', scale)
-    // } else if empty_string.contains("Cb") {
-    //     return "ERROR Cb".to_string()
-    // } else {return empty_string}
 
     return "".to_string()
 }
@@ -147,7 +123,7 @@ fn root_clean(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: 
     empty_string
 }
 
-fn root_sharp(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: [u8; 8]) -> String {
+fn root_sharp(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: [u8; 8], scale: &str) -> String {
     let mut empty_string = "".to_string();
     let mut index = 0;
     let mut shift_up = true;
@@ -173,6 +149,14 @@ fn root_sharp(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: 
         }
 
         index += 1
+    }
+
+    if empty_string.contains("H#") || empty_string.contains("E#") {
+        let n = empty_string[..1].to_string().chars().next().expect("string is empty");
+        let wrong_root = get_wrong_root(n);
+        let nn = OCTAVE_STEPS.iter().position(|&r| r == wrong_root).unwrap();
+        let n2 = if nn == 6 { OCTAVE_STEPS[1].0 } else { OCTAVE_STEPS[nn+1].0 };
+        return scale_builder(n2, 'b', scale);
     }
 
     empty_string
@@ -205,6 +189,20 @@ fn root_flat(note_semitones: Vec<u8>, note_sequence: Vec<char>, current_scale: [
         index += 1
     }
     empty_string
+}
+
+fn get_wrong_root(n: char) -> (char, u8) {
+    let wrong_root = match n {
+        'C' => ('C', 2),
+        'D' => ('D', 2),
+        'E' => ('E', 1),
+        'F' => ('F', 2),
+        'G' => ('G', 2),
+        'A' => ('A', 2),
+        'H' => ('H', 2),
+        _ => ('X', 0)
+    };
+    wrong_root
 }
 
 fn sequencer(note_name: char) -> (Vec<u8>, Vec<char>) {

@@ -110,7 +110,8 @@ mod tests {
         assert_eq!("C#D#EF#G#A#HC#".to_string(),  scale_builder('C', '#', "Dorian"));
         assert_eq!("C#DEF#G#AHC#".to_string(),    scale_builder('C', '#', "Phrygian"));
         assert_eq!("DbEbFGAbHbCDb".to_string(),   scale_builder('D', 'b', "LYDIAN")); 
-        assert_eq!("C#D#E#F#G#A#HC#".to_string(), scale_builder('C', '#', "Mixolydian"));
+        // assert_eq!("C#D#E#F#G#A#HC#".to_string(), scale_builder('C', '#', "Mixolydian"));
+        assert_eq!("DbEbFGbAbHbCbDb".to_string(), scale_builder('D', 'b', "Mixolydian"));
         assert_eq!("C#D#EF#G#AHC#".to_string(),   scale_builder('C', '#', "Minor"));
         assert_eq!("C#DEF#GAHC#".to_string(),     scale_builder('C', '#', "Locrian"));
     }
@@ -152,15 +153,37 @@ mod tests {
     fn h_flat_a_sharp() {
         assert_eq!("HbCDEbFGAHb".to_string(),     scale_builder('H', 'b', "Major"));
         assert_eq!("HbCDbEbFGAbHb".to_string(),   scale_builder('H', 'b', "Dorian"));
-        assert_eq!("A#HC#D#E#F#G#A#".to_string(), scale_builder('A', '#', "Phrygian"));
+        // assert_eq!("A#HC#D#E#F#G#A#".to_string(), scale_builder('A', '#', "Phrygian"));
+        assert_eq!("HbCbDbEbFGbAbHb".to_string(), scale_builder('A', '#', "Phrygian"));
         assert_eq!("HbCDEFGAHb".to_string(),      scale_builder('H', 'b', "LYDIAN")); 
         assert_eq!("HbCDEbFGAbHb".to_string(),    scale_builder('H', 'b', "Mixolydian"));
         assert_eq!("HbCDbEbFGbAbHb".to_string(),  scale_builder('H', 'b', "Minor"));
         assert_eq!("A#HC#D#EF#G#A#".to_string(),  scale_builder('A', '#', "Locrian"));
     }
 
-    // #[test]
-    // fn unpredictable_wrong_roots() {
-    //     assert_eq!("A#HC#D#EF#G#A#".to_string(),  scale_builder('H', 'b', "Locrian"));
-    // }
+    #[test]
+    fn unpredictable_wrong_sharp() {
+        assert_eq!("DbEbFGbAbHbCDb".to_string(),  scale_builder('C', '#', "Major"));
+        assert_eq!("DbEbFGAbHbCDb".to_string(),   scale_builder('C', '#', "LYDIAN"));
+        assert_eq!("EbFGAbHbCDEb".to_string(),    scale_builder('D', '#', "Major"));
+        assert_eq!("EbFGbAbHbCDbEb".to_string(),  scale_builder('D', '#', "Dorian"));
+        assert_eq!("EbFGAHbCDEb".to_string(),     scale_builder('D', '#', "LYDIAN"));
+        assert_eq!("EbFGAbHbCDbEb".to_string(),   scale_builder('D', '#', "Mixolydian"));
+        assert_eq!("EbFGbAbHbCbDbEb".to_string(), scale_builder('D', '#', "Minor"));
+        assert_eq!("GbAbHbCbDbEbFGb".to_string(), scale_builder('F', '#', "Major"));
+        assert_eq!("GbAbHbCDbEbFGb".to_string(),  scale_builder('F', '#', "LYDIAN"));
+
+        // assert_eq!("GbAbHbCbDbEbFbGb".to_string(),scale_builder('F', '#', "Mixolydian"));
+        assert_eq!("F#G#A#HC#D#EF#".to_string(),scale_builder('F', '#', "Mixolydian"));
+
+        assert_eq!("AbHbCDbEbFGAb".to_string(),   scale_builder('G', '#', "Major"));
+        assert_eq!("AbHbCbDbEbFGbAb".to_string(), scale_builder('G', '#', "Dorian"));
+        assert_eq!("AbHbCDEbFGAb".to_string(),    scale_builder('G', '#', "LYDIAN")); 
+        assert_eq!("AbHbCDbEbFGbAb".to_string(),  scale_builder('G', '#', "Mixolydian"));
+        assert_eq!("HbCDEbFGAHb".to_string(),     scale_builder('A', '#', "Major"));
+        assert_eq!("HbCDbEbFGAbHb".to_string(),   scale_builder('A', '#', "Dorian"));
+        assert_eq!("HbCDEFGAHb".to_string(),      scale_builder('A', '#', "LYDIAN")); 
+        assert_eq!("HbCDEbFGAbHb".to_string(),    scale_builder('A', '#', "Mixolydian"));
+        assert_eq!("HbCDbEbFGbAbHb".to_string(),  scale_builder('A', '#', "Minor"));
+    }
 }
