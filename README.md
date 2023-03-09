@@ -57,3 +57,26 @@ Until MINOR 1 STEP 2 => next notes are regular
 If MINOR 1 STEPS 2 => next notes are flat
 
 Until MINOR 2 STEPS 1 => next notes are regular
+
+**Wrong shrp/flat issue**
+
+It is impossible to completely avoid using the "wrong" sharps or flats because there are scales that will have the wrong flats or sharps. Examples:
+
+```bash
+Major / Ionian Cb or H# and E#
+Eb		F	Gb		Ab		Hb	Cb		Db		Eb
+D#      E#  F#      G#      A#  H       C#      D#
+
+Major / Ionian Cb or H#
+Gb		Ab		Hb	Cb		Db		Eb		F	Gb
+F#      G#      A#  H       C#      D#      E#  F#
+
+Dorian Cb or E#
+Ab		Hb	Cb		Db		Eb		F	Gb		Ab
+G#      A#  H       C#      D#      E#  F#      G#
+
+Phrygian Hb and Fb or E#
+Hb  Cb      Db      Eb      F   Gb      Ab      Hb
+A#	H		C#		D#		E#	F#		G#		A#
+```
+This very issue can not bo solved at all
