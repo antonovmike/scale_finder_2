@@ -64,19 +64,20 @@ It is impossible to completely avoid using the "wrong" sharps or flats because t
 
 ```bash
 Major / Ionian Cb or H# and E#
-Eb		F	Gb		Ab		Hb	Cb		Db		Eb
+Eb      F   Gb      Ab      Hb  Cb      Db      Eb
 D#      E#  F#      G#      A#  H       C#      D#
 
 Major / Ionian Cb or H#
-Gb		Ab		Hb	Cb		Db		Eb		F	Gb
+Gb      Ab      Hb  Cb      Db      Eb      F   Gb
 F#      G#      A#  H       C#      D#      E#  F#
 
 Dorian Cb or E#
-Ab		Hb	Cb		Db		Eb		F	Gb		Ab
+Ab      Hb  Cb      Db      Eb      F   Gb      Ab
 G#      A#  H       C#      D#      E#  F#      G#
 
 Phrygian Hb and Fb or E#
 Hb  Cb      Db      Eb      F   Gb      Ab      Hb
-A#	H		C#		D#		E#	F#		G#		A#
+A#  H       C#      D#      E#  F#      G#      A#
 ```
-This very issue can not bo solved at all
+This very issue can not bo solved at all. Some scales just 
+gonna be loops. It causes stack overflow
